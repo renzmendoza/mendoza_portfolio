@@ -1,0 +1,1207 @@
+
+:root {
+    --bg-blue: #1f242d;       /* Dark Blue Background */
+    --second-bg: #323946;     /* Lighter Blue for sections */
+    --mustard: #ffb400;       /* Vibrant Mustard Yellow */
+    --text-white: #ffffff;
+    --text-gray: #d1d1d1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- GLOBAL BACKGROUND SETUP --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #050505; /* Consistent dark base */
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* The glow that follows your mouse */
+.mouse-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; /* Allows you to click things 'through' the glow */
+    z-index: -1;
+    transition: transform 0.1s ease-out; /* Smooth movement */
+    filter: blur(80px);
+}
+
+/* Ambient fixed glows for depth */
+.ambient-glow-1, .ambient-glow-2 {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    z-index: -2;
+    filter: blur(120px);
+    pointer-events: none;
+}
+
+.ambient-glow-1 {
+    top: -10%;
+    right: -5%;
+    background: rgba(255, 180, 0, 0.05); /* Subtle mustard yellow hint */
+}
+
+.ambient-glow-2 {
+    bottom: 10%;
+    left: -10%;
+    background: rgba(79, 70, 229, 0.1); /* Indigo/Purple */
+}
+
+/* Ensure all sections are transparent so the background shows */
+section {
+    background: transparent !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- GLOW ANIMATIONS (Same as before but global) --- */
+.glow-1 {
+    position: absolute;
+    top: -10%;
+    left: 10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+    filter: blur(100px);
+    animation: moveGlow1 20s infinite alternate ease-in-out;
+}
+
+.glow-2 {
+    position: absolute;
+    bottom: -10%;
+    right: 5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.12) 0%, transparent 70%);
+    filter: blur(120px);
+    animation: moveGlow2 25s infinite alternate ease-in-out;
+}
+/* --- GLASS PILL NAVIGATION --- */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-container {
+    background: rgba(20, 20, 20, 0.6); /* Semi-transparent dark */
+    backdrop-filter: blur(12px); /* The "Glass" effect */
+    -webkit-backdrop-filter: blur(12px);
+    padding: 6px 12px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.nav-container ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- NAV ITEMS & GLOWING INDICATOR --- */
+.nav-container ul li {
+    position: relative;
+}
+
+.nav-container ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Active State Background */
+.nav-container ul li a.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+/* The White Glow Bar above "Home" */
+.nav-container ul li a.active::before {
+    content: "";
+    position: absolute;
+    top: -6px; /* Positioned slightly above the pill */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glow effect */
+}
+
+/* Hover States */
+.nav-container ul li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Logo sizing fix to match links */
+.logo-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    padding-left: 15px;
+    margin-right: 10px;
+}
+
+.logo-text span {
+    color: #ffb400; /* Mustard Yellow accent */
+}
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999; /* Higher than everything else */
+    display: flex;
+}
+
+.nav-container {
+    background: rgba(20, 20, 20, 0.6); 
+    backdrop-filter: blur(12px); /* Requires a dark background behind it to 'see' the glass */
+    -webkit-backdrop-filter: blur(12px);
+    padding: 6px 12px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+/* Ensure the container ALLOWS the glow to pop out the top */
+.nav-container ul li {
+    position: relative; 
+    list-style: none;
+}
+
+.nav-container ul li a.active::before {
+    content: "";
+    position: absolute;
+    top: -12px; /* Move it up so it sits above the pill */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff; /* This creates the light effect */
+    border-radius: 10px;
+    z-index: 10001;
+}
+.nav-container ul li a::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+    border-radius: 10px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease, width 0.3s ease; /* Smooth fade in/out */
+}
+
+.nav-container ul li a.active::before {
+    opacity: 1; /* Only shows when active */
+}
+/* --- HERO LAYOUT --- */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding-top: 50px;
+}
+
+.hero-text { flex: 1.2; text-align: left; }
+.hero-card-wrapper { flex: 0.8; display: flex; justify-content: flex-end; perspective: 1000px; }
+
+/* --- THE INTERACTIVE CARD --- */
+.profile-card {
+    position: relative;
+    width: 340px;
+    height: 460px;
+    background: #111;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 180, 0, 0.25); /* Subtle mustard glow */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    transform-style: preserve-3d;
+}
+
+.card-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Gradients to make white text pop */
+.card-gradient-top {
+    position: absolute;
+    top: 0; width: 100%; height: 35%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+}
+.card-gradient-bottom {
+    position: absolute;
+    bottom: 0; width: 100%; height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+/* TOP TEXT */
+.card-header {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    z-index: 5;
+    transform: translateZ(50px); /* 3D pop effect */
+}
+
+.card-name { font-size: 1.8rem; color: #fff; font-weight: 700; margin: 0; }
+.name-underline { width: 45px; height: 4px; background: #ffb400; margin: 6px 0 8px 0; border-radius: 2px; }
+.card-role { font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); margin: 0; }
+
+/* GLASSMORPHISM BOTTOM BAR */
+.status-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    right: 15px;
+    background: rgba(15, 15, 15, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 12px 18px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 5;
+    transform: translateZ(30px); /* 3D pop effect */
+}
+
+.status-left { display: flex; align-items: center; gap: 12px; }
+
+.avatar-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1.5px solid #ffb400;
+}
+.avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+.handle { font-size: 0.85rem; color: #fff; margin: 0; font-weight: 500; }
+.online-indicator { font-size: 0.75rem; color: #ffb400; display: block; }
+
+.contact-link {
+    font-size: 0.85rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: 0.3s ease;
+}
+.contact-link:hover { color: #ffb400; transform: scale(1.05); }
+
+/* MOBILE FIX */
+@media (max-width: 991px) {
+    .hero-content { flex-direction: column; text-align: center; }
+    .hero-text { order: 1; }
+    .hero-card-wrapper { order: 2; justify-content: center; }
+}
+/* THE HERO CONTAINER */
+.hero {
+    position: relative;
+    background-color: #050505; /* Darker base for better glow contrast */
+    overflow: hidden; /* Keeps the glow from leaking out */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* THE GLOW EFFECTS */
+.hero-bg-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Sits behind everything */
+    pointer-events: none; /* Allows clicking through to buttons */
+}
+
+.glow-1 {
+    position: absolute;
+    top: -10%;
+    left: 10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(197, 161, 2, 0.25) 0%, transparent 70%); /* Deep Purple */
+    filter: blur(100px);
+    animation: moveGlow1 20s infinite alternate ease-in-out;
+}
+
+.glow-2 {
+    position: absolute;
+    bottom: -10%;
+    right: 5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(229, 192, 70, 0.2) 0%, transparent 70%); /* Indigo/Blue */
+    filter: blur(120px);
+    animation: moveGlow2 25s infinite alternate ease-in-out;
+}
+
+/* ANIMATIONS TO MAKE IT INTERACTIVE-FEELING */
+@keyframes moveGlow1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(150px, 100px) scale(1.1); }
+}
+
+@keyframes moveGlow2 {
+    0% { transform: translate(0, 0) scale(1.1); }
+    100% { transform: translate(-100px, -50px) scale(1); }
+}
+
+/* Ensure content stays on top */
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 10%;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2rem;
+}
+
+.hero-text { max-width: 600px; }
+.hero-text h3 { font-size: 1.5rem; font-weight: 700; }
+.hero-text h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin: 0.5rem 0; }
+.subtitle { font-size: 1.6rem; font-weight: 700; }
+.highlight { color: var(--mustard); }
+.hero-description { font-size: 1rem; color: var(--text-gray); margin: 1.5rem 0; }
+
+.social-icons { display: flex; gap: 1rem; margin-bottom: 2rem; }
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 0.2rem solid var(--mustard);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: var(--mustard);
+    transition: 0.5s ease;
+}
+
+.social-icons a:hover {
+    background: var(--mustard);
+    color: var(--bg-blue);
+    box-shadow: 0 0 1rem var(--mustard);
+}
+
+.cta-btn {
+    display: inline-flex;      /* Changed from inline-block to inline-flex */
+    justify-content: center;   /* Centers horizontally */
+    align-items: center;       /* Centers vertically */
+    padding: 1rem 2.5rem;
+    background: var(--mustard);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--mustard);
+    font-size: 1rem;
+    color: var(--bg-blue);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.5s ease;
+    text-align: center;
+    min-width: 180px;
+}
+
+.cta-btn:hover { box-shadow: none; }
+
+/* --- ANIMATION CORE --- */
+
+/* Base class for everything that should 'reveal' on scroll */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s ease-out;
+}
+
+/* The state triggered by JavaScript when the element is on screen */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Entrance for Grids (Tech Stack & Projects) */
+.stack-item, .visual-project-card, .timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s ease;
+}
+
+/* When the parent section is active, show the children with a slight delay */
+.reveal.active .stack-item, 
+.reveal.active .visual-project-card,
+.reveal.active .timeline-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Individual delays so they pop in one by one */
+.reveal.active .stack-item:nth-child(2), 
+.reveal.active .visual-project-card:nth-child(2) { transition-delay: 0.2s; }
+.reveal.active .stack-item:nth-child(3), 
+.reveal.active .visual-project-card:nth-child(3) { transition-delay: 0.4s; }
+.reveal.active .stack-item:nth-child(4) { transition-delay: 0.6s; }
+
+/* Pulse effect for the floating badge in About section */
+.experience-floating {
+    animation: floatingPulse 3s infinite ease-in-out;
+}
+
+@keyframes floatingPulse {
+    0%, 100% { transform: translateY(0); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    50% { transform: translateY(-10px); box-shadow: 0 15px 25px rgba(255, 180, 0, 0.4); }
+}
+
+/* Glow effect for Social Icons */
+.social-icons a:hover {
+    transform: scale(1.2) rotate(10deg);
+    box-shadow: 0 0 20px var(--mustard);
+}
+/* Customizing the Typed.js Cursor */
+.typed-cursor {
+    color: var(--mustard);
+    font-size: 1.5rem;
+}
+
+#typed-text {
+    color: var(--mustard);
+}
+
+/* Hero Image & Glow Effect */
+.hero-image img {
+    width: 35vw;
+    max-width: 300px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 2rem var(--mustard));
+}
+/* About Section Layout */
+.about-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid var(--second-bg);
+    filter: drop-shadow(0 0 15px rgba(255, 180, 0, 0.3));
+}
+
+.about-text {
+    flex: 1.5;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* Floating Badge */
+.experience-floating {
+    position: absolute;
+    bottom: 20px;
+    right: -20px;
+    background: var(--second-bg);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid var(--mustard);
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Info Grid (Location, Phone, etc.) */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    background: var(--second-bg);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-icon {
+    font-size: 1.5rem;
+    color: var(--mustard);
+    margin-right: 15px;
+}
+
+.info-data span {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--mustard);
+    font-weight: 700;
+}
+
+.info-data p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-white);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-text p {
+        text-align: justify;
+    }
+    .info-box {
+        text-align: left;
+    }
+}
+/* General Sections */
+section { min-height: 0vh; padding: 0rem 0% rem; }
+#tech-stack, #projects, #contact { background: var(--second-bg); }
+
+h2 { font-size: 2.5rem; margin-bottom: 3rem; text-align: left; }
+h2::after { content: ''; display: block; width: 50px; height: 5px; background: var(--mustard); margin-top: 10px; }
+
+/* Modern Tech Stack Grid */
+.modern-stack-grid {
+    display: grid;
+    /* Forces 4 columns on desktop to fill horizontal space */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stack-item {
+    background: var(--second-bg); /* Your dark blue/grey background */
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center; /* Icon and text sit side-by-side */
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease;
+}
+
+.stack-item:hover {
+    border-color: var(--mustard); /* Use your mustard yellow accent */
+    background: rgba(255, 180, 0, 0.05);
+    transform: translateY(-3px);
+}
+
+.stack-item i {
+    font-size: 2rem;
+}
+
+.stack-item img {
+    height: 30px;
+    width: auto;
+}
+
+.stack-info h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+}
+
+.stack-info p {
+    font-size: 0.7rem;
+    color: var(--mustard);
+    margin-top: 2px;
+}
+
+/* Highlight the Java Certification */
+.stack-item.certified {
+    border-left: 4px solid var(--mustard);
+}
+
+/* Responsive fixes for mobile */
+@media (max-width: 991px) {
+    .modern-stack-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .modern-stack-grid { grid-template-columns: 1fr; }
+}
+/* Apply this to all sections for a balanced look */
+section {
+    padding: 4rem 10%; /* Standardizes the gap between all sections */
+}
+
+.visual-project-grid {
+    display: grid;
+    /* This will fit 3 cards per row if space allows, otherwise it wraps */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 25px;
+}
+
+.visual-project-card {
+    background: var(--second-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.visual-project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--mustard);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Image styling */
+.project-img-container {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Keeps all project images the same size */
+    overflow: hidden;
+    background: #000; /* Fallback color */
+}
+
+.project-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.visual-project-card:hover .project-img-container img {
+    transform: scale(1.1);
+}
+
+/* Text Area */
+.project-content {
+    padding: 20px;
+}
+
+.project-content .tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--mustard);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.project-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.project-content p {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+/* Experience Timeline Styling */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto 0;
+    padding-left: 30px;
+}
+
+/* The vertical line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 180, 0, 0.3); /* Faded mustard line */
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* The mustard dot on the line */
+.timeline-dot {
+    position: absolute;
+    left: -35px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--mustard);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--mustard);
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    color: var(--mustard);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timeline-content {
+    background: var(--second-bg);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease;
+}
+
+.timeline-content:hover {
+    border-color: var(--mustard);
+    transform: translateX(10px); /* Subtle slide effect on hover */
+}
+
+.timeline-content h4 {
+    font-size: 1.3rem;
+    color: var(--text-white);
+    margin-bottom: 5px;
+}
+
+.timeline-content .company {
+    color: var(--mustard);
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.timeline-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-content ul li {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+/* Custom bullet point */
+.timeline-content ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--mustard);
+    font-weight: bold;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 20px;
+    }
+    .timeline-content:hover {
+        transform: none; /* Disable slide on mobile for better usability */
+    }
+}
+.tag { color: var(--mustard); font-weight: bold; font-size: 0.8rem; }
+
+.exp-item { border-left: 3px solid var(--mustard); padding-left: 20px; margin-bottom: 2rem; }
+.company { color: var(--mustard); font-style: italic; }
+
+/* Contact Section Layout */
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual Contact Cards */
+.contact-card {
+    display: flex;
+    align-items: center;
+    background: var(--second-bg);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease;
+}
+
+.contact-card:hover {
+    border-color: var(--mustard);
+    transform: scale(1.02);
+}
+
+.contact-card i {
+    font-size: 1.8rem;
+    margin-right: 20px;
+}
+
+.card-detail span {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--mustard);
+    font-weight: 700;
+}
+
+.card-detail p {
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+    color: var(--text-white);
+}
+
+/* Contact Form Styling */
+.contact-form {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    gap: 15px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: var(--second-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-white);
+    font-size: 0.9rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: var(--mustard);
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form .cta-btn {
+    align-self: flex-start;
+    cursor: pointer;
+    border: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    .form-group {
+        flex-direction: column;
+    }
+    .contact-form .cta-btn {
+        width: 100%;
+    }
+}
+
+footer { padding: 2rem 10%; background: var(--bg-blue); text-align: center; border-top: 1px solid var(--second-bg); }
+
+/* Responsive Mobile Layout */
+@media (max-width: 991px) {
+    .hero-content { flex-direction: column-reverse; text-align: center; }
+    .hero-text h1 { font-size: 2.5rem; }
+    .hero-image img { width: 60vw; margin-top: 4rem; }
+    .social-icons { justify-content: center; }
+}
+/* --- CONSOLIDATED MUSTARD THEME MODAL STYLES --- */
+.mustard-modal {
+    display: none; 
+    position: fixed;
+    z-index: 10000; /* Extremely high number to stay above everything */
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(31, 36, 45, 0.9); /* var(--bg-blue) with opacity */
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto; /* Allows scrolling on mobile */
+    padding: 20px;
+}
+
+.mustard-modal.active {
+    display: flex !important; 
+}
+
+.mustard-modal-content {
+    background-color: #323946; /* var(--second-bg) */
+    width: 90%;
+    max-width: 900px;
+    border-radius: 15px;
+    position: relative;
+    padding: 30px;
+    border: 1px solid rgba(255, 180, 0, 0.2); /* var(--mustard) faded */
+    animation: modalSlideUp 0.3s ease-out;
+}
+
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mustard-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.mustard-modal-header h2 {
+    margin: 0; 
+    font-size: 1.8rem; 
+    color: var(--text-white);
+}
+
+.mustard-modal-header h2::after { display: none; } /* Removes global yellow line */
+
+.close-modal {
+    background: rgba(255, 180, 0, 0.1);
+    border: 0.1rem solid var(--mustard);
+    color: var(--mustard);
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
+}
+
+.close-modal:hover { 
+    background: var(--mustard); 
+    color: #1f242d; /* var(--bg-blue) */
+    box-shadow: 0 0 1rem var(--mustard);
+}
+
+.mustard-modal-body {
+    display: flex;
+    gap: 30px;
+}
+
+.modal-left { 
+    flex: 1.2; 
+    text-align: center;
+}
+
+/* --- SLIDESHOW STYLES --- */
+.slideshow-container {
+    width: 100%;
+    background: #1f242d; /* var(--bg-blue) */
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.mySlides {
+    display: none;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: var(--mustard);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(31, 36, 45, 0.5);
+}
+
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev { left: 0; }
+
+.prev:hover, .next:hover {
+    background-color: var(--mustard);
+    color: #1f242d;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: var(--mustard);
+    box-shadow: 0 0 10px var(--mustard);
+}
+
+.modal-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-section-title {
+    color: var(--mustard); 
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#modal-desc {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.tech-pill-container {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px;
+}
+
+.tech-pill {
+    background: rgba(255, 180, 0, 0.1);
+    color: var(--mustard);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 180, 0, 0.2);
+}
+
+.modal-action-buttons {
+    display: flex; gap: 15px; margin-top: center;
+}
+
+/* Overriding global .cta-btn for modal context */
+.modal-cta, .modal-source {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    justify-content: center;
+}
+
+.modal-cta {
+    background: var(--mustard);
+    color: #1f242d;
+}
+
+.modal-source {
+    background: transparent;
+    border: 0.2rem solid var(--mustard);
+    color: var(--mustard);
+    box-shadow: none;
+}
+
+.modal-cta:hover { box-shadow: 0 0 1.5rem var(--mustard); }
+.modal-source:hover { 
+    background: rgba(255, 180, 0, 0.1); 
+    box-shadow: 0 0 1rem rgba(255, 180, 0, 0.3);
+}
+
+/* Stack on small screens */
+@media (max-width: 768px) {
+    .mustard-modal-body { flex-direction: column; }
+}
