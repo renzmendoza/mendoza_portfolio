@@ -1,10 +1,24 @@
 // 1. Smooth Scroll for Nav Links
 const navLinks = document.querySelectorAll('nav ul li a');
+const navContainer = document.querySelector('.nav-container');
+const navMenuToggle = document.querySelector('.nav-menu-toggle');
+
+navMenuToggle.addEventListener('click', () => {
+    const isOpen = navContainer.classList.toggle('is-open');
+    navMenuToggle.setAttribute('aria-expanded', String(isOpen));
+    navMenuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    navMenuToggle.innerHTML = `<i class="fa-solid ${isOpen ? 'fa-xmark' : 'fa-bars'}" aria-hidden="true"></i>`;
+});
+
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href');
         document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+        navContainer.classList.remove('is-open');
+        navMenuToggle.setAttribute('aria-expanded', 'false');
+        navMenuToggle.setAttribute('aria-label', 'Open navigation menu');
+        navMenuToggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
         const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-container ul li a");
 
