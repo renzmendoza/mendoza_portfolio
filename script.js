@@ -104,6 +104,19 @@ const projectData = {
         desc: "Android-based inventory tracker that uses a barcode scanner to digitize and monitor product expiration dates. All data is synced to a MySQL database to reduce food waste through real-time notifications.",
         tech: ["Android Studio", "Java", "MySQL", "Google ML Kit", "OpenFoodFacts API"],
         liveLink: "#",
+    },
+    'suklian': {
+        title: "Suklian",
+        buttonText: "Visit Web App",
+        images: [
+            "html/suklian1.jpg",
+            "html/suklian2.jpg",
+            "html/suklian3.jpg",
+            "html/suklian4.jpg"
+        ],
+        desc: "Mobile-first web app that settles the ambagan when friends split a bill and pay with large bills. It computes each person's change, then plans how to hand it back using the cash the payer actually has on hand. When exact change isn't possible, it suggests a swap like “give ₱100, get ₱61 back.” It also supports English, Taglish and Tagalog, plus light and dark mode.",
+        tech: ["HTML5", "CSS3", "JavaScript", "Dynamic Programming", "Responsive Design"],
+        liveLink: "https://suklian.vercel.app/",
     }
 };
 

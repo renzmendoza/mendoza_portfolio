@@ -169,15 +169,17 @@ section {
 
 /* Logo sizing fix to match links */
 .logo-text {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #fff;
-    padding-left: 15px;
-    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px 0 5px;
 }
 
-.logo-text span {
-    color: #ffb400; /* Mustard Yellow accent */
+.logo-text img {
+    display: block;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
 }
 .navbar {
     position: fixed;
@@ -688,6 +690,61 @@ h2::after { content: ''; display: block; width: 50px; height: 5px; background: v
 /* Highlight the Java Certification */
 .stack-item.certified {
     border-left: 4px solid var(--mustard);
+}
+
+.certifications {
+    margin-top: 48px;
+}
+
+.certifications h3 {
+    margin-bottom: 22px;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.certification-badges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 220px));
+    justify-content: start;
+    gap: 16px;
+}
+
+.certification-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(50, 57, 70, 0.9), rgba(31, 36, 45, 0.8));
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.certification-badge:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 180, 0, 0.55);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
+}
+
+.certification-badge h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.8em;
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.certification-badge img {
+    display: block;
+    width: min(100%, 160px);
+    aspect-ratio: 1;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.2));
 }
 
 /* Responsive fixes for mobile */

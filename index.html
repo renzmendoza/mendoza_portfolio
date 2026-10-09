@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renz Mendoza | IT Portfolio</title>
+    <link rel="icon" type="image/png" href="rm_logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -15,7 +16,9 @@
     </div>
     <nav class = "navbar">
     <div class="nav-container">
-    <div class="logo-text">RM<span>.dev</span></div>
+    <a href="#home" class="logo-text" aria-label="Renz Mendoza home">
+        <img src="rm_logo.png" alt="Renz Mendoza">
+    </a>
     <ul>
         <li><a href="#home" class = "active">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -39,9 +42,15 @@
             </p>
             
             <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:renzjoseph.mendoza06@gmail.com" aria-label="Email Renz Mendoza">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/renzjosephmendoza" target="_blank" rel="noopener noreferrer" aria-label="Renz Mendoza on LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="#" aria-label="Renz Mendoza on GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
             </div>
 
             <a href="#projects" class="cta-btn">My Projects</a>
@@ -97,7 +106,7 @@
                 <h3>Who I Am</h3>
                 <p>Hi, I’m <strong>Renz Joseph A. Mendoza</strong>. Currently pursuing a Bachelor of Science in Information Technology with specialization in <strong>Web and Mobile Applications</strong> at National University Dasmariñas.</p>
                 
-                <p>I’ve always been driven by a fascination with how digital systems can be shaped to solve everyday problems. My background in the TVL-ICT strand at <strong>Emilio Aguinaldo College Cavite</strong> instilled in me a disciplined, hands-on approach to technology—one that values logic, persistence, and practical results above all else.</p>
+                <p>I’ve always been driven by a fascination with how digital systems can be shaped to solve everyday problems. My background in the TVL-ICT strand at Emilio Aguinaldo College Cavite instilled in me a disciplined, hands-on approach to technology—one that values logic, persistence, and practical results above all else.</p>
 
                 <p>Based in the Philippines, I pride myself on being a versatile collaborator who thrives on variety. I prefer to remain adaptable, bringing a detail-oriented and dependable work ethic to every challenge—whether I'm diving into technical development or navigating digital communications.</p>
                 
@@ -140,6 +149,8 @@
                 <div class="stack-item"><i class="devicon-html5-plain colored"></i><div class="stack-info"><h3>HTML5</h3></div></div>
                 <div class="stack-item"><i class="devicon-css3-plain colored"></i><div class="stack-info"><h3>CSS3</h3></div></div>
                 <div class="stack-item"><i class="devicon-javascript-plain colored"></i><div class="stack-info"><h3>JavaScript</h3></div></div>
+                <div class="stack-item"><i class="devicon-react-original colored"></i><div class="stack-info"><h3>React.js</h3></div></div>
+                <div class="stack-item"><i class="devicon-php-plain colored"></i><div class="stack-info"><h3>PHP</h3></div></div>
                 <div class="stack-item platform">
                     <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/android-studio-icon.png" alt="Android Studio">
                     <div class="stack-info"><h3>Android Studio</h3></div>
@@ -148,10 +159,30 @@
                     <img src="https://play-lh.googleusercontent.com/Hj20ybwfUn0f1MR-xRr1FJ-ysVdgxFU31GGicLr8DdFXoG5eCB88MeMJr990sRNIdA" alt="GDevelop">
                     <div class="stack-info"><h3>GDevelop</h3></div>
                 </div>
+                <div class="stack-item platform">
+                    <i class="fa-brands fa-figma" aria-hidden="true"></i>
+                    <div class="stack-info"><h3>Figma</h3></div>
+                </div>
+                <div class="stack-item platform">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Adobe_Photoshop_CC_icon.svg" alt="Adobe Photoshop">
+                    <div class="stack-info"><h3>Adobe Photoshop</h3></div>
+                </div>
+            </div>
+            <div class="certifications">
+                <h3>Certifications</h3>
+                <div class="certification-badges">
+                    <article class="certification-badge">
+                        <h4>IT Specialist - Java</h4>
+                        <img src="java.png" alt="IT Specialist - Java certification badge">
+                    </article>
+                    <article class="certification-badge">
+                        <h4>PMI Project Management Ready®</h4>
+                        <img src="pmi.png" alt="PMI Project Management Ready certification badge">
+                    </article>
+                </div>
             </div>
         </div>
     </section>
-
     <section id="projects" class="reveal">
         <div class="container">
             <h2>My Projects</h2>
@@ -180,12 +211,23 @@
 
                 <div class="visual-project-card" onclick="openProject('goodby')">
                     <div class="project-img-container">
-                        <img src="html/goodby_preview.png" alt="Goodby App Interface">
+                        <img src="html/goodby_preview.png" alt="GoodBy App Interface">
                     </div>
                     <div class="project-content">
                         <span class="tag highlight">Mobile Dev | Android Studio & MySQL</span>
-                        <h3>Goody</h3>
+                        <h3>GoodBy</h3>
                         <p>Android-based inventory tracker with barcode scanning and MySQL integration.</p>
+                    </div>
+                </div>
+
+                <div class="visual-project-card" onclick="openProject('suklian')">
+                    <div class="project-img-container">
+                        <img src="html/suklian.jpg" alt="Suklian bill-splitting web app">
+                    </div>
+                    <div class="project-content">
+                        <span class="tag highlight">Web App | HTML, CSS & JavaScript</span>
+                        <h3>Suklian</h3>
+                        <p>A mobile-first bill-splitting app that calculates each person's change and plans how to return it using the payer's available cash.</p>
                     </div>
                 </div>
             </div>
@@ -237,7 +279,7 @@
                     <i class="fa-solid fa-envelope highlight"></i>
                     <div class="card-detail">
                         <span>Email Me</span>
-                        <p>renzjoseph.mendoza06@email.com</p>
+                        <p>renzjoseph.mendoza06@gmail.com</p>
                     </div>
                 </div>
 
@@ -251,13 +293,15 @@
 
             </div>
 
-            <form action="#" class="contact-form">
+            <form action="https://formsubmit.co/renzjoseph.mendoza06@gmail.com" method="POST" class="contact-form">
+                <input type="hidden" name="_subject" value="New portfolio contact message">
+                <input type="hidden" name="_template" value="table">
                 <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
                 </div>
-                <input type="text" placeholder="Subject">
-                <textarea cols="30" rows="10" placeholder="Your Message" required></textarea>
+                <input type="text" name="subject" placeholder="Subject" aria-label="Subject">
+                <textarea name="message" cols="30" rows="10" placeholder="Your Message" aria-label="Your Message" required></textarea>
                 <button type="submit" class="cta-btn">Send Message</button>
             </form>
         </div>
