@@ -117,7 +117,7 @@ const projectData = {
         ],
         desc: "Android-based inventory tracker that uses a barcode scanner to digitize and monitor product expiration dates. All data is synced to a MySQL database to reduce food waste through real-time notifications.",
         tech: ["Android Studio", "Java", "MySQL", "Google ML Kit", "OpenFoodFacts API"],
-        liveLink: "#",
+        liveLink: "https://goodbyweb.vercel.app/",
     },
     'suklian': {
         title: "Suklian",
