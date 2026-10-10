@@ -68,7 +68,7 @@ function reveal() {
 
 // Typing Effect Initialization
 var typed = new Typed('#typed-text', {
-    strings: ["", "a Nerd", "a Developer", "a Tech Student"],
+    strings: ["", "a Developer", "a Tech Student", "a Designer", "a Problem Solver"],
     typeSpeed: 100,
     backSpeed: 60,
     backDelay: 1000,
@@ -131,6 +131,19 @@ const projectData = {
         desc: "Mobile-first web app that settles the ambagan when friends split a bill and pay with large bills. It computes each person's change, then plans how to hand it back using the cash the payer actually has on hand. When exact change isn't possible, it suggests a swap like “give ₱100, get ₱61 back.” It also supports English, Taglish and Tagalog, plus light and dark mode.",
         tech: ["HTML5", "CSS3", "JavaScript", "Dynamic Programming", "Responsive Design"],
         liveLink: "https://suklian.vercel.app/",
+    },
+    'fitpulse': {
+        title: "FitPulse Studio",
+        buttonText: "Visit Web App",
+        images: [
+            "html/fitpulse1.jpg",
+            "html/fitpulse2.jpg",
+            "html/fitpulse3.jpg",
+            "html/fitpulse4.jpg"
+        ],
+        desc: "FitPulse Studio is a responsive gym management web application designed to simplify fitness memberships and gym operations. It allows members to sign up, explore membership plans, manage their profiles, book fitness classes, track attendance, and access their digital membership ID through a QR code. Staff can manage members, organize class schedules, process check-ins, and monitor attendance reports through a dedicated dashboard. With secure authentication, online payment integration, and a clean, modern interface, FitPulse Studio delivers a convenient fitness experience on both mobile and desktop devices.",
+        tech: ["React 19", "Vite", "Supabase", "PostgreSQL", "Stripe", "Google OAuth", "Bootstrap", "Vercel"],
+        liveLink: "https://fitpulse-mauve.vercel.app/",
     }
 };
 
@@ -149,7 +162,12 @@ function openProject(projectId) {
     document.getElementById('modal-title').innerText = data.title;
     document.getElementById('modal-desc').innerText = data.desc;
 
-    document.getElementById('modal-btn-main').innerText = data.buttonText;
+    const mainButton = document.getElementById('modal-btn-main');
+    mainButton.hidden = !data.liveLink;
+    if (data.liveLink) {
+        mainButton.innerText = data.buttonText;
+        mainButton.href = data.liveLink;
+    }
     // Inject 4 Images into Slideshow slots
     document.getElementById('modal-img-1').src = data.images[0];
     document.getElementById('modal-img-2').src = data.images[1];
@@ -168,8 +186,6 @@ function openProject(projectId) {
         span.innerText = tech;
         techContainer.appendChild(span);
     });
-
-    document.getElementById('modal-btn-main').href = data.liveLink;
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';

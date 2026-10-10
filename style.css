@@ -1262,6 +1262,10 @@ footer { padding: 2rem 10%; background: var(--bg-blue); text-align: center; bord
     justify-content: center;
 }
 
+.modal-cta[hidden] {
+    display: none;
+}
+
 .modal-cta {
     background: var(--mustard);
     color: #1f242d;
